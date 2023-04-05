@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton;
+namespace Twm\LaravelInvoice;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use VendorName\Skeleton\Commands\SkeletonCommand;
+use Twm\LaravelInvoice\Commands\LaravelInvoiceCommand;
 
-class SkeletonServiceProvider extends PackageServiceProvider
+class LaravelInvoiceServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
     {
@@ -16,10 +16,11 @@ class SkeletonServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package
-            ->name('skeleton')
+            ->name('laravel-invoice')
             ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_skeleton_table')
-            ->hasCommand(SkeletonCommand::class);
+            // ->hasViews()
+            ->hasMigration('create_invoices_table')
+            ->hasMigration('create_invoice_lines_table')
+            ->hasCommand(LaravelInvoiceCommand::class);
     }
 }

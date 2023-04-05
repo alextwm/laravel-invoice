@@ -15,9 +15,9 @@ return new class extends Migration
             $table->string('product_name');
             $table->string('unit');
             $table->integer('quantity');
-            $table->double('pret_fara_tva',10,2);
-            $table->double('valoare_fara_tva',10,2);
-            $table->double('valoare_tva',10,2);
+            $table->double('pret_fara_tva', 10, 2);
+            $table->double('valoare_fara_tva', 10, 2);
+            $table->double('valoare_tva', 10, 2);
             $table->timestamps();
         });
     }

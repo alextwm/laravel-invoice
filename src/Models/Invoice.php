@@ -2,14 +2,14 @@
 
 namespace Twm\LaravelInvoice\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use App\Models\Client;
+use Illuminate\Database\Eloquent\Model;
 
 class Invoice extends Model
 {
    protected $guarded = ['id'];
 
-   public function lines() 
+   public function lines()
    {
       return $this->hasMany(InvoiceLine::class);
    }
@@ -18,5 +18,4 @@ class Invoice extends Model
    {
       return $this->belongsTo(Client::class);
    }
-
 }

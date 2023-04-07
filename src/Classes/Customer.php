@@ -8,7 +8,7 @@ class Customer
 
    public function __construct($fields)
    {
-      foreach($fields as $key => $value) {
+      foreach ($fields as $key => $value) {
          $this->{$key} = $value;
       }
    }

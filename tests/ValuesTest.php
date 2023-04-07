@@ -14,7 +14,7 @@ class ValuesTest extends TestCase
 
       $expectResult = 40.5;
 
-      $result = InvoiceGenerator::price_without_vat($simulatePrice,$simulateTVA);
+      $result = InvoiceGenerator::price_without_vat($simulatePrice, $simulateTVA);
       $this->assertEquals($expectResult, $result);
    }
 
@@ -26,10 +26,10 @@ class ValuesTest extends TestCase
       $simulateTVA = 19;
 
       $expectResult = 243;
-      
-      $result = InvoiceGenerator::value_without_vat($simulateQuantity,$simulatePrice,$simulateTVA);
 
-      $this->assertEquals($expectResult,$result);
+      $result = InvoiceGenerator::value_without_vat($simulateQuantity, $simulatePrice, $simulateTVA);
+
+      $this->assertEquals($expectResult, $result);
    }
 
    /** @test */
@@ -41,8 +41,8 @@ class ValuesTest extends TestCase
 
       $expectResult = 57;
 
-      $result = InvoiceGenerator::vat_value($simulateQuantity,$simulatePrice,$simulateTVA);
+      $result = InvoiceGenerator::vat_value($simulateQuantity, $simulatePrice, $simulateTVA);
 
-      $this->assertEquals($expectResult,$result);
+      $this->assertEquals($expectResult, $result);
    }
 }

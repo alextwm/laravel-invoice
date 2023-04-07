@@ -10,8 +10,8 @@ return new class extends Migration
     {
         Schema::create('invoices', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('client_id')->index()->unsigned()->nullable();
-            $table->foreign('client_id')->references('id')->on('clients');
+            // $table->bigInteger('client_id')->index()->unsigned()->nullable();
+            // $table->foreign('client_id')->references('id')->on('clients');
             $table->string('serial');
             $table->bigInteger('number');
             $table->date('emited_date');
@@ -31,8 +31,12 @@ return new class extends Migration
             $table->double('total_fara_tva',10,2)->nullable();
             $table->double('total_tva',10,2)->nullable();
             $table->double('total_general',10,2)->nullable();
-            $table->integer('cota_tva');
             $table->timestamps();
         });
+    }
+
+    public function down()
+    {
+        Schema::dropIfExists('invoices');
     }
 };

@@ -2,35 +2,33 @@
 
 namespace Twm\LaravelInvoice\Tests;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Twm\LaravelInvoice\LaravelInvoiceServiceProvider;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
-class TestCase extends Orchestra
+abstract class TestCase extends Orchestra
 {
-    protected function setUp(): void
-    {
-        parent::setUp();
+   public function setUp(): void
+   {
+      parent::setUp();
 
-        Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'Twm\\LaravelInvoice\\Database\\Factories\\'.class_basename($modelName).'Factory'
-        );
-    }
+      Factory::guessFactoryNamesUsing(
+         fn ($modelName) =>'Twm\\LaravelInvoice\\Database\\Factories\\'.class_basename($modelName).'Factory'
+      );
+   }
 
-    protected function getPackageProviders($app)
-    {
-        return [
-            LaravelInvoiceServiceProvider::class,
-        ];
-    }
+   public function getEnvironmentSetup($app)
+   {
+      // config()->set('database.default','testing');
 
-    public function getEnvironmentSetUp($app)
-    {
-        config()->set('database.default', 'testing');
-
-        /*
-        $migration = include __DIR__.'/../database/migrations/create_laravel-invoice_table.php.stub';
-        $migration->up();
-        */
-    }
+      $migrations = [
+         include(__DIR__.'/../database/migrations/create_invoices_table.php'),
+         include(__DIR__.'/../database/migrations/create_invoice_lines_table.php'),
+         include(__DIR__.'/../database/migrations/create_numbers_table.php')
+      ];
+      
+      foreach($migrations as $migration) {
+         $migration->down();
+         $migration->up();
+      }
+   }
 }

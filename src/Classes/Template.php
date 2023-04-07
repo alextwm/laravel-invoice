@@ -5,10 +5,12 @@ namespace Twm\LaravelInvoice\Classes;
 use Carbon\Carbon;
 use Twm\LaravelInvoice\Classes\Pdf;
 use Twm\LaravelInvoice\Models\Invoice;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Response;
 
 class Template extends Pdf
 {
-   public function generate(Invoice $invoice)
+   public function generate(Invoice $invoice,$disk = '',$name)
    {
       $pdf = new Pdf();
       $pdf->AddPage();
@@ -23,7 +25,11 @@ class Template extends Pdf
       $this->middle($pdf,$invoice);
       $this->foot($pdf,$invoice);
 
-      $pdf->Output('D','test.pdf');
+      if(!$disk) {
+         $pdf->Output('D',$name);
+         return;
+      }
+      $pdf->Output('F',Storage::disk($disk)->path('').$name);
    }
 
    public function head($pdf,$invoice)

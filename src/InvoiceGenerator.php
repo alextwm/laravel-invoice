@@ -2,6 +2,7 @@
 
 namespace Twm\LaravelInvoice;
 
+use Illuminate\Support\Facades\Storage;
 use Twm\LaravelInvoice\Classes\Template;
 use Twm\LaravelInvoice\Models\InvoiceLine;
 use Twm\LaravelInvoice\Traits\InvoiceTrait;
@@ -12,6 +13,9 @@ class InvoiceGenerator
    use InvoiceTrait;
    
    public $invoice;
+
+   public $name;
+   public $disk;
 
    public $lines = [];
 
@@ -65,8 +69,17 @@ class InvoiceGenerator
       return $this;
    }
 
-   public function generate() 
+   public function generate($disk,$name) 
    {
-      (new Template)->generate($this->invoice);
+      $this->name = $name;
+      $this->disk = $disk;
+      (new Template)->generate($this->invoice,$disk,$name);
+
+      return redirect()->back();
+   }
+
+   public function download()
+   {
+      return response()->download(Storage::disk($this->disk)->path('').$this->name);
    }
 }

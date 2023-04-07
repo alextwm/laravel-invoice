@@ -28,9 +28,9 @@ return new class extends Migration
             $table->string('customer_county')->nullable();
             $table->string('customer_iban')->nullable();
             $table->string('customer_bank')->nullable();
-            $table->double('total_fara_tva',10,2)->nullable();
-            $table->double('total_tva',10,2)->nullable();
-            $table->double('total_general',10,2)->nullable();
+            $table->double('total_fara_tva', 10, 2)->nullable();
+            $table->double('total_tva', 10, 2)->nullable();
+            $table->double('total_general', 10, 2)->nullable();
             $table->timestamps();
         });
     }

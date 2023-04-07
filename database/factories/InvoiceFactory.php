@@ -2,13 +2,13 @@
 
 namespace Twm\LaravelInvoice\Database\Factories;
 
-use Twm\LaravelInvoice\Models\Invoice;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Twm\LaravelInvoice\Models\Invoice;
 
 class InvoiceFactory extends Factory
 {
     protected $model = Invoice::class;
-    
+
     public function definition(): array
     {
         return [
@@ -30,4 +30,3 @@ class InvoiceFactory extends Factory
         ];
     }
 }
-

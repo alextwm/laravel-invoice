@@ -3,7 +3,6 @@
 namespace Twm\LaravelInvoice\Tests;
 
 use Twm\LaravelInvoice\Models\Invoice;
-use Faker\Generator as Faker;
 
 class InvoiceTest extends TestCase
 {
@@ -17,7 +16,7 @@ class InvoiceTest extends TestCase
    {
       $myModels = Invoice::factory(5)->create();
 
-      $this->assertCount(5,$myModels);
+      $this->assertCount(5, $myModels);
    }
 
    /** @test */
@@ -25,6 +24,6 @@ class InvoiceTest extends TestCase
    {
       $myModels = Invoice::factory(5)->create();
 
-      $this->assertEquals(5,$myInvoices);
+      $this->assertEquals(5, $myInvoices);
    }
 }

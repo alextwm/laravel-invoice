@@ -15,6 +15,7 @@ class InvoiceGenerator
    public $invoice;
 
    public $name;
+
    public $disk;
 
    public $lines = [];
@@ -68,11 +69,11 @@ class InvoiceGenerator
       return $this;
    }
 
-   public function generate($disk,$name) 
+   public function generate($disk, $name)
    {
       $this->name = $name;
       $this->disk = $disk;
-      (new Template)->generate($this->invoice,$disk,$name);
+      (new Template)->generate($this->invoice, $disk, $name);
 
       return redirect()->back();
    }

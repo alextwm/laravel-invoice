@@ -31,8 +31,8 @@ trait InvoiceTrait
       }
    }
 
-   public static function price_without_vat($price,$cota)
-   {  
+   public static function price_without_vat($price, $cota)
+   {
       $current = ($cota / 100) * $price;
 
       return number_format($price - $current, 2);

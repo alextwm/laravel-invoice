@@ -59,6 +59,9 @@
         {
             "type": "composer", 
             "url": "https://repo.packagist.com/twm/"
+        },
+        {
+            "packagist.org": false
         }
     ],
     "require-all" : true,

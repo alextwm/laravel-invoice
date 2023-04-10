@@ -5,7 +5,7 @@ namespace Twm\LaravelInvoice\Facades;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \Twm\LaravelInvoice\LaravelInvoice
+ * @see \Twm\LaravelInvoice\Facades\LaravelInvoice
  */
 class LaravelInvoice extends Facade
 {

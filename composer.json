@@ -39,7 +39,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Twm\\LaravelInvoice\\Tests\\": "tests/"
+            "Twm\\LaravelInvoice\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -60,10 +60,7 @@
         "laravel": {
             "providers": [
                 "Twm\\LaravelInvoice\\LaravelInvoiceServiceProvider"
-            ],
-            "aliases": {
-                "LaravelInvoice": "Twm\\LaravelInvoice\\Facades\\LaravelInvoice"
-            }
+            ]
         }
     },
     "minimum-stability": "dev",

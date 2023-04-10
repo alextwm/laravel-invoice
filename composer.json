@@ -55,7 +55,6 @@
             "phpstan/extension-installer": true
         }
     },
-    "require-all" : true,
     "extra": {
         "laravel": {
             "providers": [
@@ -67,11 +66,5 @@
         }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true,
-    "http-basic": {
-        "repo.packagist.com": {
-            "username": "alextwm",
-            "password": "8d771cf73426ac8f1e7df55a5cdc5fc2bfecfe556ab6f14fb76e0008ead0"
-        }
-    }
+    "prefer-stable": true
 }

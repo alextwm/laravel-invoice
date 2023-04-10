@@ -29,7 +29,7 @@ class InvoiceFactory extends Factory
             'customer_iban' => $this->faker->word(),
             'customer_bank' => $this->faker->word(),
             'customer_county' => $this->faker->word(),
-            'cota' => 19
+            'cota' => 19,
         ];
     }
 }

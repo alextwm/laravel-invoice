@@ -6,7 +6,7 @@ parameters:
     paths:
         - src
         - config
-        - database/migrations/create_invoice_table.php
+        - database/migrations/create_invoices_table.php
         - database/migrations/create_invoice_lines_table.php
         - database/migrations/create_numbers_table.php
     tmpDir: build/phpstan

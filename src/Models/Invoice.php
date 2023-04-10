@@ -17,11 +17,6 @@ class Invoice extends Model
       return $this->hasMany(InvoiceLine::class);
    }
 
-   // public function client()
-   // {
-   //    return $this->belongsTo(Client::class);
-   // }
-
    public function storno()
    {
       return $this->belongsTo(Invoice::class, 'storno_invoice_id');

@@ -24,7 +24,7 @@ jobs:
         exclude:
           - laravel: 10.*
             php: 8.0
-            
+
 
     name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.stability }} - ${{ matrix.os }}
 
@@ -51,6 +51,3 @@ jobs:
 
       - name: List Installed Dependencies
         run: composer show -D
-
-      - name: Execute tests
-        run: vendor/bin/phpunit

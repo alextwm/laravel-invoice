@@ -3,13 +3,11 @@
 namespace Twm\LaravelInvoice\Classes;
 
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Storage;
-use Twm\LaravelInvoice\Models\Invoice;
 
 class Template extends Pdf
 {
-
    public $infoInvoice;
+
    public $infoFooter;
 
    public function Header()
@@ -18,28 +16,27 @@ class Template extends Pdf
       $this->SetX(8);
       $this->SetFont('helvetica', 'B', 9);
       $this->SetCharSpacing(0.1);
-      $this->Write(10,'Furnizor');
-      $this->SetFont('helvetica','B',12);
+      $this->Write(10, 'Furnizor');
+      $this->SetFont('helvetica', 'B', 12);
       $this->SetY(14);
       $this->SetX(8);
-      $this->MultiAlignCell(50,5,$this->infoInvoice->provider_name,0,1,'L',false);
-      $this->SetFont('helvetica','',9);
+      $this->MultiAlignCell(50, 5, $this->infoInvoice->provider_name, 0, 1, 'L', false);
+      $this->SetFont('helvetica', '', 9);
       $this->SetX(8);
-      $this->MultiAlignCell(60, 5, "Nr.ord.reg.com./an : ".$this->infoInvoice->provider_reg_com_nr."\nA.F./C.U.I. : ".$this->infoInvoice->provider_cui."\nSediul : ".$this->infoInvoice->provider_address."\nContul : ".$this->infoInvoice->provider_bank."\nBanca : ".$this->infoInvoice->provider_iban, 0, 0, 'L', false);
-
+      $this->MultiAlignCell(60, 5, 'Nr.ord.reg.com./an : '.$this->infoInvoice->provider_reg_com_nr."\nA.F./C.U.I. : ".$this->infoInvoice->provider_cui."\nSediul : ".$this->infoInvoice->provider_address."\nContul : ".$this->infoInvoice->provider_bank."\nBanca : ".$this->infoInvoice->provider_iban, 0, 0, 'L', false);
 
       $this->SetY(5);
       $this->SetX(140);
       $this->SetFont('helvetica', 'B', 9);
       $this->SetCharSpacing(0.1);
-      $this->Write(10,'Furnizor');
-      $this->SetFont('helvetica','B',12);
+      $this->Write(10, 'Furnizor');
+      $this->SetFont('helvetica', 'B', 12);
       $this->SetY(14);
       $this->SetX(140);
-      $this->MultiAlignCell(50,5,$this->infoInvoice->customer_name,0,1,'L',false);
-      $this->SetFont('helvetica','',9);
+      $this->MultiAlignCell(50, 5, $this->infoInvoice->customer_name, 0, 1, 'L', false);
+      $this->SetFont('helvetica', '', 9);
       $this->SetX(140);
-      $this->MultiAlignCell(60, 5, "Nr.ord.reg.com./an : ".$this->infoInvoice->customer_reg_com_nr."\nA.F./C.U.I. : ".$this->infoInvoice->customer_cui."\nSediul : ".$this->infoInvoice->customer_address."\nContul : ".$this->infoInvoice->customer_bank."\nBanca : ".$this->infoInvoice->customer_iban, 0, 0, 'L', false);
+      $this->MultiAlignCell(60, 5, 'Nr.ord.reg.com./an : '.$this->infoInvoice->customer_reg_com_nr."\nA.F./C.U.I. : ".$this->infoInvoice->customer_cui."\nSediul : ".$this->infoInvoice->customer_address."\nContul : ".$this->infoInvoice->customer_bank."\nBanca : ".$this->infoInvoice->customer_iban, 0, 0, 'L', false);
 
       $this->SetFont('helvetica', 'B', 16);
       $this->SetY(35);
@@ -49,8 +46,8 @@ class Template extends Pdf
       $this->SetY(50);
       $this->SetX(76);
       $this->SetFont('helvetica', '', 7);
-      $this->SetDrawColor(0,0,0);
-      $this->MultiCell(60, 25, '', 1, 'L',false);
+      $this->SetDrawColor(0, 0, 0);
+      $this->MultiCell(60, 25, '', 1, 'L', false);
       $this->SetY(52);
       $this->SetX(78);
       $this->MultiAlignCell(50, 5, 'Seria: ............... Nr. .................', 0, 0, 'L', false);
@@ -80,13 +77,13 @@ class Template extends Pdf
       $this->Image(config('invoice.logo'), 70, 8, 50, 18);
       $this->SetY(67);
       $this->SetX(10);
-      
-      $this->Write(10,'Apasa aici pentru a plati');
+
+      $this->Write(10, 'Apasa aici pentru a plati');
 
       $this->SetY(67);
       $this->SetX(10);
-      $this->Image(config('invoice.button_link'),8,65,55,15,'',$this->infoInvoice->payment_url);
-      
+      $this->Image(config('invoice.button_link'), 8, 65, 55, 15, '', $this->infoInvoice->payment_url);
+
       $this->SetLeftMargin(5);
       $this->Line(5, 5, 5, 270);
       $this->Line(205, 5, 205, 270);
@@ -159,17 +156,17 @@ class Template extends Pdf
       $this->SetFont('helvetica', 'B', 10);
       $this->Write(10, $this->infoInvoice->total_general);
 
-      $this->SetFont('helvetica','',8);
+      $this->SetFont('helvetica', '', 8);
       $this->SetY(-28);
-      $this->Write(10,'Termen de plata: '.Carbon::parse($this->infoInvoice->termen_de_plata)->format('d/m/Y'));
+      $this->Write(10, 'Termen de plata: '.Carbon::parse($this->infoInvoice->termen_de_plata)->format('d/m/Y'));
 
-      $this->SetFont('helvetica','',7);
+      $this->SetFont('helvetica', '', 7);
       $this->SetY(-24);
-      $this->SetTextColor(128,126,124);
-      $this->Write(10,'Factura este valabila fara semnatura si stampila, conform art. 319 alin. 29 din legea 227/2015');
+      $this->SetTextColor(128, 126, 124);
+      $this->Write(10, 'Factura este valabila fara semnatura si stampila, conform art. 319 alin. 29 din legea 227/2015');
 
       $this->SetY(-12);
-      $this->SetTextColor(0,0,0);
-      $this->Cell(200,5,'Pagina '.$this->PageNo().'/{nb}',0,0,'C');
+      $this->SetTextColor(0, 0, 0);
+      $this->Cell(200, 5, 'Pagina '.$this->PageNo().'/{nb}', 0, 0, 'C');
    }
 }

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->double('pret_fara_tva', 10, 2);
             $table->double('valoare_fara_tva', 10, 2);
             $table->double('valoare_tva', 10, 2);
-            $table->double('discount',10,2)->nullable();
+            $table->double('discount', 10, 2)->nullable();
             $table->timestamps();
         });
     }

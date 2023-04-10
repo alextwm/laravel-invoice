@@ -24,6 +24,6 @@ class Invoice extends Model
 
    public function storno()
    {
-      return $this->belongsTo(Invoice::class,'storno_invoice_id');
+      return $this->belongsTo(Invoice::class, 'storno_invoice_id');
    }
 }

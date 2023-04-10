@@ -9,12 +9,19 @@ class Line
    use InvoiceTrait;
 
    public $name;
+
    public $unit;
+
    public $quantity;
+
    public $price;
+
    public $pret_fara_tva;
+
    public $valoare_fara_tva;
+
    public $valoare_tva;
+
    public $discount;
 
    public function name(string $name)
@@ -70,7 +77,7 @@ class Line
    {
       $this->discount = $percent;
       $this->price = -($percent / 100) * $this->price;
-      
+
       return $this;
    }
 }

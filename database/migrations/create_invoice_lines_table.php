@@ -12,13 +12,14 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('invoice_id')->index()->unsigned()->nullable();
             $table->foreign('invoice_id')->references('id')->on('invoices');
-            $table->string('product_name');
+            $table->text('product_name');
             $table->string('unit');
             $table->integer('quantity');
             $table->double('price', 10, 2);
             $table->double('pret_fara_tva', 10, 2);
             $table->double('valoare_fara_tva', 10, 2);
             $table->double('valoare_tva', 10, 2);
+            $table->double('discount',10,2)->nullable();
             $table->timestamps();
         });
     }

@@ -52,8 +52,66 @@ php artisan vendor:publish --tag="laravel-invoice-views"
 ## Usage
 
 ```php
-$laravelInvoice = new Twm\LaravelInvoice();
-echo $laravelInvoice->echoPhrase('Hello, Twm!');
+// You have to create an array with pairs key-value with invoice table columns 
+
+$example = [
+   'client_id' => null,
+        'customer_name' => $faker->company(),
+        'customer_reg_com_nr' => $faker->word(),
+        'customer_cui' => $faker->word(),
+        'customer_address' => $faker->address(),
+        'customer_iban' => Str::random(10),
+        'customer_bank' => $faker->word(),
+        'customer_county' => 'Bucuresti',
+        'provider_name' => $faker->company(),
+        'provider_reg_com_nr' => $faker->word(),
+        'provider_cui' => $faker->word(),
+        'provider_address' => $faker->address(),
+        'provider_iban' => Str::random(10),
+        'provider_bank' => $faker->word(),
+        'provider_capital' => '200 RON',
+        'cota' => 19,
+        'termen_de_plata' => '2023-05-31',
+        'payment_url' => 'www.example.com' //optional
+];
+
+/** For each line of invoice lines you have to create a collection with lines like this */
+
+// Initialize an empty collection
+
+$linesCollection = collect([]);
+
+foreach($lines as $line) {
+   $line = (new Line())->name('Product name')
+                        ->unit('buc')
+                        ->quantity(4)
+                        ->price(100)
+                        ->pret_fara_tva(19)
+                        ->valoare_fara_tva(19)
+                        ->valoare_tva(19);
+   // If you want to create a line with discount you have to use the discount method after price method
+                        '.....'
+                        ->price(100)
+                        ->discount(100)
+                        '.....'
+            
+   $linesCollection->push($line);
+}
+
+/** To generate invoice you have to use this line */
+
+$invoice = InvoiceGenerator::init()->make($example)->lines($linesCollection);
+
+/** first argument is the name of invoice and the second is the disk you want to save the invoice */
+$invoice->generate('Invoice_name.pdf','local');
+
+
+/** If you want to generate an existing invoice use this */
+
+$inv = Invoice::first();
+
+GenerateExisting::generate($inv,'Invoice_name.pdf');
+
 ```
 
 ## Testing

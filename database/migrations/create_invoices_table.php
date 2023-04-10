@@ -10,7 +10,7 @@ return new class extends Migration
     {
         Schema::create('invoices', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('client_id')->index()->unsigned()->nullable();
+            $table->integer('client_id')->index()->unsigned()->nullable();
             $table->foreign('client_id')->references('id')->on('clients');
             $table->string('serial');
             $table->bigInteger('number');
@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('provider_address');
             $table->string('provider_iban');
             $table->string('provider_bank');
+            $table->string('provider_capital');
             $table->string('customer_name');
             $table->string('customer_reg_com_nr')->nullable();
             $table->string('customer_cui')->nullable();
@@ -30,8 +31,11 @@ return new class extends Migration
             $table->string('customer_bank')->nullable();
             $table->double('total_fara_tva',10,2)->nullable();
             $table->double('total_tva',10,2)->nullable();
-            $table->double('total_general',10,2)->nullable();
+            $table->float('total_general',10,2)->nullable();
             $table->integer('cota');
+            $table->date('termen_de_plata')->nullable();
+            $table->string('payment_url')->nullable();
+            $table->bigInteger('storno_invoice_id')->nullable();
             $table->timestamps();
         });
     }

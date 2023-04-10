@@ -17,6 +17,7 @@ class InvoiceGenerator
    public $invoice;
 
    public $name;
+
    public $disk;
 
    public $lines = [];

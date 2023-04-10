@@ -3,9 +3,8 @@
 namespace Twm\LaravelInvoice\Classes;
 
 use Carbon\Carbon;
-use Twm\LaravelInvoice\Models\Invoice;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Response;
+use Twm\LaravelInvoice\Models\Invoice;
 
 class Template extends Pdf
 {

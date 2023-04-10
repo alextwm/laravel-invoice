@@ -24,6 +24,6 @@ class InvoiceTest extends TestCase
    {
       $myModels = Invoice::factory(5)->create();
 
-      $this->assertEquals(5, $myInvoices);
+      $this->assertEquals(5, $myModels->count());
    }
 }

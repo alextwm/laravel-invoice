@@ -21,12 +21,15 @@ class InvoiceFactory extends Factory
             'provider_address' => $this->faker->address(),
             'provider_iban' => $this->faker->word(),
             'provider_bank' => $this->faker->word(),
+            'provider_capital' => $this->faker->word(),
             'customer_name' => $this->faker->company(),
             'customer_reg_com_nr' => $this->faker->word(),
             'customer_cui' => $this->faker->word(),
             'customer_address' => $this->faker->address(),
             'customer_iban' => $this->faker->word(),
             'customer_bank' => $this->faker->word(),
+            'customer_county' => $this->faker->word(),
+            'cota' => 19
         ];
     }
 }

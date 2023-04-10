@@ -18,7 +18,7 @@ abstract class TestCase extends Orchestra
 
    public function getEnvironmentSetup($app)
    {
-      config()->set('database.default','testing');
+      config()->set('database.default', 'testing');
 
       $migrations = [
           include(__DIR__.'/../database/migrations/create_invoices_table.php'),

@@ -12,7 +12,7 @@ class InvoiceTest extends TestCase
    /** @test */
    public function it_can_create_invoice()
    {
-      
+
       $this->assertTrue(true);
    }
 

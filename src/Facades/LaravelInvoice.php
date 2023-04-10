@@ -8,6 +8,6 @@ class LaravelInvoice extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return 'laravelinvoice'
+        return 'laravelinvoice';
     }
 }

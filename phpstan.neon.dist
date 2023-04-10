@@ -6,10 +6,11 @@ parameters:
     paths:
         - src
         - config
-        - database
+        - database/migrations/create_invoice_table.php
+        - database/migrations/create_invoice_lines_table.php
+        - database/migrations/create_numbers_table.php
     tmpDir: build/phpstan
     checkOctaneCompatibility: true
-    checkModelProperties: false
     checkMissingIterableValueType: false
 
     ignoreErrors:

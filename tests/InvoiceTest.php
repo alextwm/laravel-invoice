@@ -2,8 +2,6 @@
 
 namespace Twm\LaravelInvoice\Tests;
 
-use Twm\LaravelInvoice\Models\Invoice;
-
 class InvoiceTest extends TestCase
 {
    public function setUp(): void

@@ -33,7 +33,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Twm\\LaravelInvoice\\": "src/",
+            "Twm\\LaravelInvoice\\": "src",
             "Twm\\LaravelInvoice\\Database\\Factories\\": "database/factories/"
         }
     },

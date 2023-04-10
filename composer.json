@@ -55,6 +55,13 @@
             "phpstan/extension-installer": true
         }
     },
+    "repositories": [
+        {
+            "type": "composer", 
+            "url": "https://repo.packagist.com/twm/"
+        }
+    ],
+    "require-all" : true,
     "extra": {
         "laravel": {
             "providers": [

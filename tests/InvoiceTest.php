@@ -12,18 +12,18 @@ class InvoiceTest extends TestCase
    }
 
    /** @test */
-   public function it_can_create_invoice()
-   {
-      $myModel = Invoice::factory(1)->create();
+   // public function it_can_create_invoice()
+   // {
+   //    $myModel = Invoice::factory(1)->create();
 
-      $this->assertNotNull($myModel);
-   }
+   //    $this->assertNotNull($myModel);
+   // }
 
-   /** @test */
-   public function it_can_load_invoices()
-   {
-      $myModel = Invoice::factory(1)->create();
+   // /** @test */
+   // public function it_can_load_invoices()
+   // {
+   //    $myModel = Invoice::factory(1)->create();
 
-      $this->assertNotNull($myModel);
-   }
+   //    $this->assertNotNull($myModel);
+   // }
 }

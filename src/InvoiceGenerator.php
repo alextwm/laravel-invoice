@@ -32,24 +32,24 @@ class InvoiceGenerator
           'serial' => config('invoice.serial'),
           'number' => self::getNumber(),
           'emited_date' => now()->format('Y-m-d'),
-          'client_id' => $vars['client_id'],
-          'customer_name' => $vars['customer_name'],
-          'customer_reg_com_nr' => $vars['customer_reg_com_nr'],
-          'customer_cui' => $vars['customer_cui'],
-          'customer_address' => $vars['customer_address'],
-          'customer_iban' => $vars['customer_iban'],
-          'customer_bank' => $vars['customer_bank'],
-          'customer_county' => array_key_exists('customer_county', $vars) ? $vars['customer_county'] : null,
-          'provider_name' => $vars['provider_name'],
-          'provider_reg_com_nr' => $vars['provider_reg_com_nr'],
-          'provider_cui' => $vars['provider_cui'],
-          'provider_address' => $vars['provider_address'],
-          'provider_iban' => $vars['provider_iban'],
-          'provider_bank' => $vars['provider_bank'],
-          'provider_capital' => array_key_exists('provider_capital', $vars) ? $vars['provider_capital'] : null,
-          'cota' => $vars['cota'],
+          'client_id' => $this->key_exists('client_id',$vars),
+          'customer_name' => $this->key_exists('customer_name',$vars),
+          'customer_reg_com_nr' => $this->key_exists('customer_reg_com_nr',$vars),
+          'customer_cui' => $this->key_exists('customer_cui',$vars),
+          'customer_address' => $this->key_exists('customer_address',$vars),
+          'customer_iban' => $this->key_exists('customer_iban',$vars),
+          'customer_bank' => $this->key_exists('customer_bank',$vars),
+          'customer_county' => $this->key_exists('customer_county', $vars),
+          'provider_name' => $this->key_exists('provider_name',$vars),
+          'provider_reg_com_nr' => $this->key_exists('provider_reg_com_nr',$vars),
+          'provider_cui' => $this->key_exists('provider_cui',$vars),
+          'provider_address' => $this->key_exists('provider_address',$vars),
+          'provider_iban' => $this->key_exists('provider_iban',$vars),
+          'provider_bank' => $this->key_exists('provider_bank',$vars),
+          'provider_capital' => $this->key_exists('provider_capital', $vars),
+          'cota' => $this->key_exists('cota',$vars),
           'termen_de_plata' => Carbon::parse($vars['termen_de_plata'])->format('Y-m-d'),
-          'payment_url' => $vars['payment_url'],
+          'payment_url' => $this->key_exists('payment_url',$vars)
       ]);
 
       return $this;
@@ -67,7 +67,8 @@ class InvoiceGenerator
              'pret_fara_tva' => $item->pret_fara_tva,
              'valoare_fara_tva' => $item->valoare_fara_tva,
              'valoare_tva' => $item->valoare_tva,
-         ]);
+             'discount' => $item->discount
+         ]); 
 
          array_push($this->lines, $item);
       }
@@ -96,5 +97,10 @@ class InvoiceGenerator
    public function download()
    {
       return response()->download(Storage::disk($this->disk)->path('').$this->name);
+   }
+
+   private function key_exists($key,$array)
+   {
+      return array_key_exists($key,$array) ? $array[$key] : null;
    }
 }

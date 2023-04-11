@@ -36,7 +36,7 @@ class Template extends Pdf
       $this->MultiAlignCell(50, 5, $this->infoInvoice->customer_name, 0, 1, 'L', false);
       $this->SetFont('helvetica', '', 9);
       $this->SetX(140);
-      $this->MultiAlignCell(60, 5, 'Nr.ord.reg.com./an : '.$this->infoInvoice->customer_reg_com_nr."\nA.F./C.U.I. : ".$this->infoInvoice->customer_cui."\nSediul : ".$this->infoInvoice->customer_address."\nContul : ".$this->infoInvoice->customer_bank."\nBanca : ".$this->infoInvoice->customer_iban, 0, 0, 'L', false);
+      $this->MultiAlignCell(60, 5, 'Nr.ord.reg.com./an : '.$this->infoInvoice->customer_reg_com_nr."\nA.F./C.U.I. : ".$this->infoInvoice->customer_cui."\nSediul : ".$this->infoInvoice->customer_address."\nJudetul : ".$this->infoInvoice->customer_county."\nContul : ".$this->infoInvoice->customer_bank."\nBanca : ".$this->infoInvoice->customer_iban, 0, 0, 'L', false);
 
       $this->SetFont('helvetica', 'B', 16);
       $this->SetY(35);

@@ -21,16 +21,16 @@ class Generator extends Pdf
 
    public function generate()
    {
+     
       $pdf = new Template();
       $pdf->AliasNbPages();
       $this->invoiceInfo($pdf);
       $this->lines($pdf);
-
-      if ($this->disk) {
-         return $pdf->Output('F', Storage::disk($this->disk)->path('').'/'.$this->name);
-      } else {
+      // if ($this->disk) {
+         // return $pdf->Output('F', Storage::disk($this->disk)->path('').'/'.$this->name);
+      // } else {
          return $pdf->Output('D', $this->name);
-      }
+      // }
    }
 
    public function invoiceInfo($pdf)

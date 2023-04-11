@@ -21,7 +21,7 @@ class Generator extends Pdf
 
    public function generate()
    {
-     
+
       $pdf = new Template();
       $pdf->AliasNbPages();
       $this->invoiceInfo($pdf);

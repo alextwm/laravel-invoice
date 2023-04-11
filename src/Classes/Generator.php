@@ -7,7 +7,9 @@ use Illuminate\Support\Facades\Storage;
 class Generator extends Pdf
 {
    public $invoice;
+
    public $name;
+
    public $disk;
 
    public function __construct($invoice, $name, $disk = '')
@@ -89,10 +91,10 @@ class Generator extends Pdf
 
       $pdf->Line(5, 230, 205, 230);
 
-      if($this->invoice->storno_invoice_id) {
+      if ($this->invoice->storno_invoice_id) {
          $pdf->SetY(222);
          $pdf->SetX(16);
-         $pdf->Write(10,'Storno la factura seria '.$this->invoice->storno->serial.' nr.'.$this->invoice->storno->number);
+         $pdf->Write(10, 'Storno la factura seria '.$this->invoice->storno->serial.' nr.'.$this->invoice->storno->number);
       }
    }
 }

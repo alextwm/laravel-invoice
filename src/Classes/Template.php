@@ -75,15 +75,15 @@ class Template extends Pdf
       $this->SetX(110);
       $this->Write(10, Carbon::parse($this->infoInvoice->emited_date)->format('d-m-Y'));
 
-      if($this->infoInvoice->taxare_inversa) {
+      if ($this->infoInvoice->taxare_inversa) {
          $this->SetY(71);
          $this->SetX(76);
-         $this->SetFont('helvetica','B',10);
-         $this->Cell(60,10,'TAXARE INVERSA',0,0,'C');
+         $this->SetFont('helvetica', 'B', 10);
+         $this->Cell(60, 10, 'TAXARE INVERSA', 0, 0, 'C');
       }
-      
+
       $this->Image(config('invoice.logo'), 70, 8, 50, 18);
-      
+
       $this->SetLeftMargin(5);
       $this->Line(5, 5, 5, 270);
       $this->Line(205, 5, 205, 270);

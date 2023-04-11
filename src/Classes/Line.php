@@ -52,10 +52,10 @@ class Line
       return $this;
    }
 
-   public function cota(int $cota) 
+   public function cota(int $cota)
    {
       $this->cota = $cota;
-      
+
       return $this;
    }
 

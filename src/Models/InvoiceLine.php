@@ -9,8 +9,7 @@ class InvoiceLine extends Model
    /**
     * Twm\LaravelInvoice\Models
     *
-    * @property mixed $id
-    * @property int $valoare_tva
+    * @property float $valoare_tva
     */
    protected $guarded = ['id'];
 

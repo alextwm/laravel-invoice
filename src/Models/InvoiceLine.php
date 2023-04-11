@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
  * Twm\LaravelInvoice\Models
  *
  * @property float $valoare_tva
- */
+*/
+
 class InvoiceLine extends Model
 {
    protected $guarded = ['id'];

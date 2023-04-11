@@ -9,13 +9,21 @@ class Line
    use InvoiceTrait;
 
    public $name;
+
    public $unit;
+
    public $quantity;
+
    public $price;
+
    public $pret_fara_tva;
+
    public $valoare_fara_tva;
+
    public $valoare_tva;
+
    public $discount;
+
    public $cota;
 
    public function name(string $name)

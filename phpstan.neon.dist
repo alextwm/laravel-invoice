@@ -9,6 +9,7 @@ parameters:
         - database/migrations/create_invoices_table.php
         - database/migrations/create_invoice_lines_table.php
         - database/migrations/create_numbers_table.php
+        - database/migrations/create_invoice_files_table.php
     tmpDir: build/phpstan
     checkOctaneCompatibility: true
     checkMissingIterableValueType: false

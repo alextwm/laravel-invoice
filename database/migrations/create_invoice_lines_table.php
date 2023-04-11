@@ -14,6 +14,7 @@ return new class extends Migration
             $table->foreign('invoice_id')->references('id')->on('invoices');
             $table->text('product_name');
             $table->string('unit');
+            $table->integer('cota');
             $table->integer('quantity');
             $table->double('price', 10, 2);
             $table->double('pret_fara_tva', 10, 2);

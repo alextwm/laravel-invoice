@@ -33,8 +33,9 @@ return new class extends Migration
             $table->double('total_tva', 10, 2)->nullable();
             $table->float('total_general', 10, 2)->nullable();
             $table->integer('cota');
-            $table->date('termen_de_plata')->nullable();
+            $table->string('termen_de_plata')->nullable();
             $table->string('payment_url')->nullable();
+            $table->boolean('taxare_inversa')->default(false);
             $table->bigInteger('storno_invoice_id')->nullable();
             $table->timestamps();
         });

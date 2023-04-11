@@ -52,6 +52,13 @@ class Line
       return $this;
    }
 
+   public function cota(int $cota) 
+   {
+      $this->cota = $cota;
+      
+      return $this;
+   }
+
    public function pret_fara_tva(int $cota)
    {
       $this->pret_fara_tva = floatval($this->price_without_vat($this->price, $cota));

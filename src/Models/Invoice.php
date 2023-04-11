@@ -20,4 +20,9 @@ class Invoice extends Model
    {
       return $this->belongsTo(Invoice::class, 'storno_invoice_id');
    }
+
+   public function file()
+   {
+      return $this->hasOne(InvoiceFile::class);
+   }
 }

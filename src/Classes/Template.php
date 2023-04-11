@@ -29,7 +29,7 @@ class Template extends Pdf
       $this->SetX(140);
       $this->SetFont('helvetica', 'B', 9);
       $this->SetCharSpacing(0.1);
-      $this->Write(10, 'Furnizor');
+      $this->Write(10, 'Client');
       $this->SetFont('helvetica', 'B', 12);
       $this->SetY(14);
       $this->SetX(140);
@@ -43,47 +43,47 @@ class Template extends Pdf
       $this->SetX(75);
       $this->MultiCell(60, 6, 'FACTURA FISCALA', 0, 'C', false);
 
-      $this->SetY(50);
+      $this->SetY(48);
       $this->SetX(76);
       $this->SetFont('helvetica', '', 7);
       $this->SetDrawColor(0, 0, 0);
       $this->MultiCell(60, 25, '', 1, 'L', false);
-      $this->SetY(52);
+      $this->SetY(50);
       $this->SetX(78);
       $this->MultiAlignCell(50, 5, 'Seria: ............... Nr. .................', 0, 0, 'L', false);
-      $this->SetY(57);
+      $this->SetY(55);
       $this->SetX(78);
       $this->MultiAlignCell(50, 5, 'Din data (ziua,luna,anul) : ........................', 0, 0, 'L', false);
-      $this->SetY(62);
+      $this->SetY(60);
       $this->SetX(78);
       $this->MultiAlignCell(50, 5, 'Nr. aviz de insotire a marfii : ........................', 0, 0, 'L', false);
-      $this->SetY(67);
+      $this->SetY(65);
       $this->SetX(78);
       $this->MultiAlignCell(50, 5, '(daca este cazul)', 0, 0, 'C', false);
 
       $this->SetFont('helvetica', '', 8);
-      $this->SetY(49);
+
+      $this->SetY(47);
       $this->SetX(88);
       $this->Write(10, $this->infoInvoice->serial);
 
-      $this->SetY(49);
+      $this->SetY(47);
       $this->SetX(105);
       $this->Write(10, $this->infoInvoice->number);
 
-      $this->SetY(53.5);
+      $this->SetY(51.5);
       $this->SetX(110);
       $this->Write(10, Carbon::parse($this->infoInvoice->emited_date)->format('d-m-Y'));
 
+      if($this->infoInvoice->taxare_inversa) {
+         $this->SetY(71);
+         $this->SetX(76);
+         $this->SetFont('helvetica','B',10);
+         $this->Cell(60,10,'TAXARE INVERSA',0,0,'C');
+      }
+      
       $this->Image(config('invoice.logo'), 70, 8, 50, 18);
-      $this->SetY(67);
-      $this->SetX(10);
-
-      $this->Write(10, 'Apasa aici pentru a plati');
-
-      $this->SetY(67);
-      $this->SetX(10);
-      $this->Image(config('invoice.button_link'), 8, 65, 55, 15, '', $this->infoInvoice->payment_url);
-
+      
       $this->SetLeftMargin(5);
       $this->Line(5, 5, 5, 270);
       $this->Line(205, 5, 205, 270);
@@ -130,6 +130,8 @@ class Template extends Pdf
       $this->SetY(230);
       $this->SetX(45);
       $this->MultiCell(60, 5, "Date privind expeditia\nNumele delegatului: ......................\nB.I / C.I. seria ............... nr. ................ eliberat(a) ......................\nMijloc de transport: ...............\nNr. inmatriculare: ..................");
+
+      $this->Image(config('invoice.button_link'), 45, 260, 35, 9, '', $this->infoInvoice->payment_url);
 
       $this->SetFont('helvetica', '', 10);
       $this->SetY(235);

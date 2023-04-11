@@ -2,7 +2,11 @@
 
 namespace Twm\LaravelInvoice\Traits;
 
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\File;
 use Twm\LaravelInvoice\Models\Number;
+use Illuminate\Support\Facades\Storage;
+use Twm\LaravelInvoice\Models\InvoiceFile;
 
 trait InvoiceTrait
 {

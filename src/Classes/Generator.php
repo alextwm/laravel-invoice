@@ -7,9 +7,7 @@ use Illuminate\Support\Facades\Storage;
 class Generator extends Pdf
 {
    public $invoice;
-
    public $name;
-
    public $disk;
 
    public function __construct($invoice, $name, $disk = '')
@@ -21,16 +19,15 @@ class Generator extends Pdf
 
    public function generate()
    {
-
       $pdf = new Template();
       $pdf->AliasNbPages();
       $this->invoiceInfo($pdf);
       $this->lines($pdf);
-      // if ($this->disk) {
-         // return $pdf->Output('F', Storage::disk($this->disk)->path('').'/'.$this->name);
-      // } else {
+      if ($this->disk) {
+         return $pdf->Output('F', Storage::disk($this->disk)->path('').'/'.$this->name);
+      } else {
          return $pdf->Output('D', $this->name);
-      // }
+      }
    }
 
    public function invoiceInfo($pdf)
@@ -70,7 +67,7 @@ class Generator extends Pdf
          $pdf->Cell(15, 5, $line->quantity, 0, 0, 'C');
          $pdf->SetY($currentY);
          $pdf->SetX(115);
-         $pdf->Cell(15, 5, $this->invoice->cota, 0, 0, 'C');
+         $pdf->Cell(15, 5, $line->cota, 0, 0, 'C');
          $pdf->SetY($currentY);
          $pdf->SetX(130);
          $pdf->Cell(35, 5, $line->pret_fara_tva, 0, 0, 'C');
@@ -91,5 +88,11 @@ class Generator extends Pdf
       $pdf->Line(185, 90, 185, 230);
 
       $pdf->Line(5, 230, 205, 230);
+
+      if($this->invoice->storno_invoice_id) {
+         $pdf->SetY(222);
+         $pdf->SetX(16);
+         $pdf->Write(10,'Storno la factura seria '.$this->invoice->storno->serial.' nr.'.$this->invoice->storno->number);
+      }
    }
 }

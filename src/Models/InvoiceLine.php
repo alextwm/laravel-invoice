@@ -6,6 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class InvoiceLine extends Model
 {
+   /**
+    * Twm\LaravelInvoice\Models
+    *
+    * @property mixed $id
+    * @property int $valoare_tva
+    */
    protected $guarded = ['id'];
 
    public function invoice()

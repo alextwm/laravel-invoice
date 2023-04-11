@@ -114,5 +114,8 @@ class InvoiceGenerator
       return array_key_exists($key, $array) ? $array[$key] : null;
    }
 
-   private function test($var){return true;}
+   private function test($var)
+   {
+   return true;
+   }
 }

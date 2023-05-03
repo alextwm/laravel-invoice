@@ -147,7 +147,7 @@ class Template extends Pdf
       $this->SetFont('helvetica', '', 8);
       $this->SetY(235);
       $this->SetX(167);
-      $this->Write(10, $this->infoInvoice->total_fara_tva);
+      $this->Write(10, number_format($this->infoInvoice->total_fara_tva,2));
 
       $this->SetY(235);
       $this->SetX(186);
@@ -156,7 +156,7 @@ class Template extends Pdf
       $this->SetY(255);
       $this->SetX(175);
       $this->SetFont('helvetica', 'B', 10);
-      $this->Write(10, $this->infoInvoice->total_general);
+      $this->Write(10, number_format($this->infoInvoice->total_general,2));
 
       $this->SetFont('helvetica', '', 8);
       $this->SetY(-28);

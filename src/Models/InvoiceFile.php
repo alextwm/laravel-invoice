@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class InvoiceFile extends Model
 {
-   protected $guarded = ['id'];
+    protected $guarded = ['id'];
 
-   public function invoice()
-   {
-      return $this->belongsTo(Invoice::class);
-   }
+    public function invoice()
+    {
+        return $this->belongsTo(Invoice::class);
+    }
 }

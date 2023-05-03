@@ -6,87 +6,87 @@ use Twm\LaravelInvoice\Traits\InvoiceTrait;
 
 class Line
 {
-   use InvoiceTrait;
+    use InvoiceTrait;
 
-   public $name;
+    public $name;
 
-   public $unit;
+    public $unit;
 
-   public $quantity;
+    public $quantity;
 
-   public $price;
+    public $price;
 
-   public $pret_fara_tva;
+    public $pret_fara_tva;
 
-   public $valoare_fara_tva;
+    public $valoare_fara_tva;
 
-   public $valoare_tva;
+    public $valoare_tva;
 
-   public $discount;
+    public $discount;
 
-   public $cota;
+    public $cota;
 
-   public function name(string $name)
-   {
-      $this->name = $name;
+    public function name(string $name)
+    {
+        $this->name = $name;
 
-      return $this;
-   }
+        return $this;
+    }
 
-   public function unit(string $unit)
-   {
-      $this->unit = $unit;
+    public function unit(string $unit)
+    {
+        $this->unit = $unit;
 
-      return $this;
-   }
+        return $this;
+    }
 
-   public function quantity(float $quantity)
-   {
-      $this->quantity = $quantity;
+    public function quantity(float $quantity)
+    {
+        $this->quantity = $quantity;
 
-      return $this;
-   }
+        return $this;
+    }
 
-   public function price(float $price)
-   {
-      $this->price = $price;
+    public function price(float $price)
+    {
+        $this->price = $price;
 
-      return $this;
-   }
+        return $this;
+    }
 
-   public function cota(int $cota)
-   {
-      $this->cota = $cota;
+    public function cota(int $cota)
+    {
+        $this->cota = $cota;
 
-      return $this;
-   }
+        return $this;
+    }
 
-   public function pret_fara_tva(int $cota)
-   {
-      $this->pret_fara_tva = floatval($this->price_without_vat($this->price, $cota));
+    public function pret_fara_tva(int $cota)
+    {
+        $this->pret_fara_tva = floatval($this->price_without_vat($this->price, $cota));
 
-      return $this;
-   }
+        return $this;
+    }
 
-   public function valoare_fara_tva(int $cota)
-   {
-      $this->valoare_fara_tva = floatval($this->value_without_vat($this->quantity, $this->price, $cota));
+    public function valoare_fara_tva(int $cota)
+    {
+        $this->valoare_fara_tva = floatval($this->value_without_vat($this->quantity, $this->price, $cota));
 
-      return $this;
-   }
+        return $this;
+    }
 
-   public function valoare_tva(int $cota)
-   {
-      $this->valoare_tva = floatval($this->vat_value($this->quantity, $this->price, $cota));
+    public function valoare_tva(int $cota)
+    {
+        $this->valoare_tva = floatval($this->vat_value($this->quantity, $this->price, $cota));
 
-      return $this;
-   }
+        return $this;
+    }
 
-   public function discount($percent)
-   {
-      $this->discount = $percent;
-      $this->price = -($percent / 100) * $this->price;
+    public function discount($percent)
+    {
+        $this->discount = $percent;
+        $this->price = -($percent / 100) * $this->price;
 
-      return $this;
-   }
+        return $this;
+    }
 }

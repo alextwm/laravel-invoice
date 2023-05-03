@@ -7,22 +7,22 @@ use Illuminate\Database\Eloquent\Model;
 
 class Invoice extends Model
 {
-   use HasFactory;
+    use HasFactory;
 
-   protected $guarded = ['id'];
+    protected $guarded = ['id'];
 
-   public function lines()
-   {
-      return $this->hasMany(InvoiceLine::class);
-   }
+    public function lines()
+    {
+        return $this->hasMany(InvoiceLine::class);
+    }
 
-   public function storno()
-   {
-      return $this->belongsTo(Invoice::class, 'storno_invoice_id');
-   }
+    public function storno()
+    {
+        return $this->belongsTo(Invoice::class, 'storno_invoice_id');
+    }
 
-   public function file()
-   {
-      return $this->hasOne(InvoiceFile::class);
-   }
+    public function file()
+    {
+        return $this->hasOne(InvoiceFile::class);
+    }
 }

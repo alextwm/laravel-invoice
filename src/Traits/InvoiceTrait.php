@@ -6,71 +6,71 @@ use Twm\LaravelInvoice\Models\Number;
 
 trait InvoiceTrait
 {
-   public static function getNumber()
-   {
-      $max = 0;
+    public static function getNumber()
+    {
+        $max = 0;
 
-      $numberModel = Number::where('serial', config('invoice.serial'))->first();
+        $numberModel = Number::where('serial', config('invoice.serial'))->first();
 
-      if ($numberModel) {
+        if ($numberModel) {
 
-         $max = ++$numberModel->number;
-         $numberModel->update([
-             'number' => $max,
-         ]);
+            $max = ++$numberModel->number;
+            $numberModel->update([
+                'number' => $max,
+            ]);
 
-         return $max;
+            return $max;
 
-      } else {
-         Number::create([
-             'serial' => config('invoice.serial'),
-             'number' => 1,
-         ]);
+        } else {
+            Number::create([
+                'serial' => config('invoice.serial'),
+                'number' => 1,
+            ]);
 
-         return 1;
-      }
-   }
+            return 1;
+        }
+    }
 
-   public static function price_without_vat($price, $cota)
-   {
-      $vatPrice = ($price-($price/(1+$cota/100)));
+    public static function price_without_vat($price, $cota)
+    {
+        $vatPrice = ($price - ($price / (1 + $cota / 100)));
 
-      return $price - number_format($vatPrice,2,'.','');
-   }
+        return $price - number_format($vatPrice, 2, '.', '');
+    }
 
-   public static function value_without_vat($qty, $price, $cota)
-   {
-      $value = ($cota / 100) * ($price * $qty);
+    public static function value_without_vat($qty, $price, $cota)
+    {
+        $value = ($cota / 100) * ($price * $qty);
 
-      return ($price * $qty) - $value;
-   }
+        return ($price * $qty) - $value;
+    }
 
-   public static function vat_value($qty, $price, $cota)
-   {
-      $vatPrice = ($price-($price/(1+$cota/100)));
-      
-      return $qty * number_format($vatPrice,2,'.',''); 
-   }
+    public static function vat_value($qty, $price, $cota)
+    {
+        $vatPrice = ($price - ($price / (1 + $cota / 100)));
 
-   public static function total_value($items)
-   {
-      $value = 0;
+        return $qty * number_format($vatPrice, 2, '.', '');
+    }
 
-      foreach ($items as $item) {
-         $value += $item->valoare_fara_tva;
-      }
+    public static function total_value($items)
+    {
+        $value = 0;
 
-      return $value;   
-   }
+        foreach ($items as $item) {
+            $value += $item->valoare_fara_tva;
+        }
 
-   public static function total_vat($items)
-   {
-      $value = 0;
+        return $value;
+    }
 
-      foreach ($items as $item) {
-         $value += $item->valoare_tva;
-      }
+    public static function total_vat($items)
+    {
+        $value = 0;
 
-      return $value;
-   }
+        foreach ($items as $item) {
+            $value += $item->valoare_tva;
+        }
+
+        return $value;
+    }
 }

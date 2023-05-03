@@ -6,5 +6,5 @@ use Twm\LaravelInvoice\Traits\InvoiceTrait;
 
 class StornoGenerator
 {
-   use InvoiceTrait;
+    use InvoiceTrait;
 }

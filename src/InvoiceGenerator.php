@@ -29,8 +29,8 @@ class InvoiceGenerator
     public function make($vars)
     {
         $this->invoice = InvoiceModel::create([
-            'serial' => config('invoice.serial'),
-            'number' => self::getNumber(),
+            'serial' => $this->key_exists('serial', $vars),
+            'number' => $this->key_exists('serial',$vars) ? self::getNumber($vars['serial']) : null,
             'emited_date' => now()->format('Y-m-d'),
             'client_id' => $this->key_exists('client_id', $vars),
             'customer_name' => $this->key_exists('customer_name', $vars),

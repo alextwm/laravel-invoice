@@ -12,6 +12,9 @@ class Template extends Pdf
 
     public function Header()
     {
+        $banca = $this->infoInvoice->customer_bank ? "\nContul : ".$this->infoInvoice->customer_bank : '';
+        $iban = $this->infoInvoice->customer_iban ? "\nBanca : ".$this->infoInvoice->customer_iban : '';
+
         $this->SetY(5);
         $this->SetX(8);
         $this->SetFont('helvetica', 'B', 9);
@@ -36,7 +39,7 @@ class Template extends Pdf
         $this->MultiAlignCell(50, 5, $this->infoInvoice->customer_name, 0, 1, 'L', false);
         $this->SetFont('helvetica', '', 9);
         $this->SetX(140);
-        $this->MultiAlignCell(60, 5, 'Nr.ord.reg.com./an : '.$this->infoInvoice->customer_reg_com_nr."\nA.F./C.U.I. : ".$this->infoInvoice->customer_cui."\nSediul : ".$this->infoInvoice->customer_address."\nJudetul : ".$this->infoInvoice->customer_county."\nContul : ".$this->infoInvoice->customer_bank."\nBanca : ".$this->infoInvoice->customer_iban, 0, 0, 'L', false);
+        $this->MultiAlignCell(60, 5, 'Nr.ord.reg.com./an : '.$this->infoInvoice->customer_reg_com_nr."\nA.F./C.U.I. : ".$this->infoInvoice->customer_cui."\nSediul : ".$this->infoInvoice->customer_address."\nJudetul : ".$this->infoInvoice->customer_county.$banca.$iban, 0, 0, 'L', false);
 
         $this->SetFont('helvetica', 'B', 16);
         $this->SetY(35);
@@ -131,7 +134,10 @@ class Template extends Pdf
         $this->SetX(45);
         $this->MultiCell(60, 5, "Date privind expeditia\nNumele delegatului: ......................\nB.I / C.I. seria ............... nr. ................ eliberat(a) ......................\nMijloc de transport: ...............\nNr. inmatriculare: ..................");
 
-        $this->Image(config('invoice.button_link'), 45, 260, 35, 9, '', $this->infoInvoice->payment_url);
+        if($this->infoInvoice->payment_url) {
+            $this->Image(config('invoice.button_link'), 45, 260, 35, 9, '', $this->infoInvoice->payment_url);
+        }
+        
 
         $this->SetFont('helvetica', '', 10);
         $this->SetY(235);

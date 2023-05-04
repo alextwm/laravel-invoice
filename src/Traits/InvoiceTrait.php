@@ -6,11 +6,11 @@ use Twm\LaravelInvoice\Models\Number;
 
 trait InvoiceTrait
 {
-    public static function getNumber()
+    public static function getNumber($serial)
     {
         $max = 0;
 
-        $numberModel = Number::where('serial', config('invoice.serial'))->first();
+        $numberModel = Number::where('serial', $serial)->first();
 
         if ($numberModel) {
 
@@ -23,7 +23,7 @@ trait InvoiceTrait
 
         } else {
             Number::create([
-                'serial' => config('invoice.serial'),
+                'serial' => $serial,
                 'number' => 1,
             ]);
 

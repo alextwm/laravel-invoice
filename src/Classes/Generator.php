@@ -12,6 +12,8 @@ class Generator extends Pdf
 
     public $disk;
 
+    public $type;
+
     public function __construct($invoice, $name, $disk = '')
     {
         $this->invoice = $invoice;
@@ -19,12 +21,15 @@ class Generator extends Pdf
         $this->disk = $disk;
     }
 
-    public function generate()
+    public function generate($type = '')
     {
         $pdf = new Template();
         $pdf->AliasNbPages();
         $this->invoiceInfo($pdf);
         $this->lines($pdf);
+        if($type) {
+            return $pdf->Output($type, $this->name);
+        }
         if ($this->disk) {
             return $pdf->Output('F', Storage::disk($this->disk)->path('').'/'.$this->name);
         } else {

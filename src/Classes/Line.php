@@ -79,8 +79,7 @@ class Line
     public function valoare_fara_tva(int $cota)
     {
         if (! $this->type) {
-            $pret = ($this->price * (1 + $cota / 100));
-            $this->valoare_fara_tva = $this->quantity * $pret;
+            $this->valoare_fara_tva = $this->quantity * $this->price;
 
             return $this;
         }

@@ -27,7 +27,7 @@ class Generator extends Pdf
         $pdf->AliasNbPages();
         $this->invoiceInfo($pdf);
         $this->lines($pdf);
-        if($type) {
+        if ($type) {
             return $pdf->Output($type, $this->name);
         }
         if ($this->disk) {

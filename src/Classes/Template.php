@@ -53,7 +53,7 @@ class Template extends Pdf
         $this->MultiCell(60, 25, '', 1, 'L', false);
         $this->SetY(50);
         $this->SetX(78);
-        $this->MultiAlignCell(50, 5, 'Seria: ............... Nr. .................', 0, 0, 'L', false);
+        $this->MultiAlignCell(50, 5, 'Seria: ...................... Nr. .................', 0, 0, 'L', false);
         $this->SetY(55);
         $this->SetX(78);
         $this->MultiAlignCell(50, 5, 'Din data (ziua,luna,anul) : ........................', 0, 0, 'L', false);
@@ -71,7 +71,7 @@ class Template extends Pdf
         $this->Write(10, $this->infoInvoice->serial);
 
         $this->SetY(47);
-        $this->SetX(105);
+        $this->SetX(110);
         $this->Write(10, $this->infoInvoice->number);
 
         $this->SetY(51.5);
@@ -134,9 +134,10 @@ class Template extends Pdf
         $this->SetX(45);
         $this->MultiCell(60, 5, "Date privind expeditia\nNumele delegatului: ......................\nB.I / C.I. seria ............... nr. ................ eliberat(a) ......................\nMijloc de transport: ...............\nNr. inmatriculare: ..................");
 
-        if ($this->infoInvoice->payment_url) {
+        if($this->infoInvoice->payment_url) {
             $this->Image(config('invoice.button_link'), 45, 260, 35, 9, '', $this->infoInvoice->payment_url);
         }
+        
 
         $this->SetFont('helvetica', '', 10);
         $this->SetY(235);
@@ -155,8 +156,8 @@ class Template extends Pdf
         $this->Write(10, number_format($this->infoInvoice->total_fara_tva, 2));
 
         $this->SetY(235);
-        $this->SetX(186);
-        $this->Write(10, $this->infoInvoice->total_tva);
+        $this->SetX(185);
+        $this->Write(10, number_format($this->infoInvoice->total_tva,2));
 
         $this->SetY(255);
         $this->SetX(175);

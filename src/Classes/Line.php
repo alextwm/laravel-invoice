@@ -26,6 +26,8 @@ class Line
 
     public $cota;
 
+    public $type;
+
     public function name(string $name)
     {
         $this->name = $name;
@@ -47,8 +49,9 @@ class Line
         return $this;
     }
 
-    public function price(float $price)
+    public function price(float $price, bool $type)
     {
+        $this->type = $type;
         $this->price = $price;
 
         return $this;
@@ -63,21 +66,35 @@ class Line
 
     public function pret_fara_tva(int $cota)
     {
-        $this->pret_fara_tva = floatval($this->price_without_vat($this->price, $cota));
+        if(!$this->type) {
+            $this->pret_fara_tva = $this->price;
+            return $this;
+        }
+        $this->pret_fara_tva = $this->price_without_vat($this->price, $cota);
 
         return $this;
     }
 
     public function valoare_fara_tva(int $cota)
     {
-        $this->valoare_fara_tva = floatval($this->value_without_vat($this->quantity, $this->price, $cota));
+        if(!$this->type) {
+            $pret = ($this->price * (1 + $cota/100)); 
+            $this->valoare_fara_tva = $this->quantity * $pret;
+            return $this;
+        }
+        $this->valoare_fara_tva = $this->value_without_vat($this->quantity, $this->price, $cota);
 
         return $this;
     }
 
     public function valoare_tva(int $cota)
     {
-        $this->valoare_tva = floatval($this->vat_value($this->quantity, $this->price, $cota));
+        if(!$this->type) {
+            $pret = ($this->price * (1 + $cota/100)); 
+            $this->valoare_tva = $this->quantity * ($pret - $this->price);
+            return $this;
+        }
+        $this->valoare_tva = $this->vat_value($this->quantity, $this->price, $cota);
 
         return $this;
     }

@@ -134,10 +134,9 @@ class Template extends Pdf
         $this->SetX(45);
         $this->MultiCell(60, 5, "Date privind expeditia\nNumele delegatului: ......................\nB.I / C.I. seria ............... nr. ................ eliberat(a) ......................\nMijloc de transport: ...............\nNr. inmatriculare: ..................");
 
-        if($this->infoInvoice->payment_url) {
+        if ($this->infoInvoice->payment_url) {
             $this->Image(config('invoice.button_link'), 45, 260, 35, 9, '', $this->infoInvoice->payment_url);
         }
-        
 
         $this->SetFont('helvetica', '', 10);
         $this->SetY(235);

@@ -66,8 +66,9 @@ class Line
 
     public function pret_fara_tva(int $cota)
     {
-        if(!$this->type) {
+        if (! $this->type) {
             $this->pret_fara_tva = $this->price;
+
             return $this;
         }
         $this->pret_fara_tva = $this->price_without_vat($this->price, $cota);
@@ -77,9 +78,10 @@ class Line
 
     public function valoare_fara_tva(int $cota)
     {
-        if(!$this->type) {
-            $pret = ($this->price * (1 + $cota/100)); 
+        if (! $this->type) {
+            $pret = ($this->price * (1 + $cota / 100));
             $this->valoare_fara_tva = $this->quantity * $pret;
+
             return $this;
         }
         $this->valoare_fara_tva = $this->value_without_vat($this->quantity, $this->price, $cota);
@@ -89,9 +91,10 @@ class Line
 
     public function valoare_tva(int $cota)
     {
-        if(!$this->type) {
-            $pret = ($this->price * (1 + $cota/100)); 
+        if (! $this->type) {
+            $pret = ($this->price * (1 + $cota / 100));
             $this->valoare_tva = $this->quantity * ($pret - $this->price);
+
             return $this;
         }
         $this->valoare_tva = $this->vat_value($this->quantity, $this->price, $cota);

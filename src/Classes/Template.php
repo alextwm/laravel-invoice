@@ -19,13 +19,13 @@ class Template extends Pdf
         $email = $this->infoInvoice->provider_email ? "\nEmail: ".$this->infoInvoice->provider_email : '';
         $website = $this->infoInvoice->provider_website ? "\nWebsite: ".$this->infoInvoice->provider_website : '';
 
-        $banks = json_decode($this->infoInvoice->provider_bank);
+        $banks = $this->infoInvoice->provider_bank;
 
         $templateBanks = '';
 
-        if (count($banks) > 0) {
+        if ($banks) {
             foreach ($banks as $bank) {
-                $templateBanks .= "\nBanca: ".$bank->bank."\n".$bank->account;
+                $templateBanks .= "\nBanca: ".$bank['bank']."\n".$bank['account'];
             }
         }
 

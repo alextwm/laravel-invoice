@@ -11,6 +11,10 @@ class Invoice extends Model
 
     protected $guarded = ['id'];
 
+    protected $casts = [
+        'provider_bank' => 'array'
+    ];
+    
     public function lines()
     {
         return $this->hasMany(InvoiceLine::class);

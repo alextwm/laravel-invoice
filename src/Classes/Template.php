@@ -23,8 +23,8 @@ class Template extends Pdf
 
         $templateBanks = '';
 
-        if(count($banks) > 0) {
-            foreach($banks as $bank) {
+        if (count($banks) > 0) {
+            foreach ($banks as $bank) {
                 $templateBanks .= "\nBanca: ".$bank->bank."\n".$bank->account;
             }
         }

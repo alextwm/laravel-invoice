@@ -19,9 +19,12 @@ return new class extends Migration
             $table->string('provider_reg_com_nr');
             $table->string('provider_cui');
             $table->string('provider_address');
-            $table->string('provider_iban');
-            $table->string('provider_bank');
-            $table->string('provider_capital');
+            // $table->string('provider_iban');
+            $table->json('provider_bank')->nullable();
+            $table->string('provider_capital')->nullable();
+            $table->string('provider_phone')->nullable();
+            $table->string('provider_email')->nullable();
+            $table->string('provider_website')->nullable();
             $table->string('customer_name');
             $table->string('customer_reg_com_nr')->nullable();
             $table->string('customer_cui')->nullable();

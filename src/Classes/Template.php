@@ -15,6 +15,20 @@ class Template extends Pdf
         $banca = $this->infoInvoice->customer_bank ? "\nContul : ".$this->infoInvoice->customer_bank : '';
         $iban = $this->infoInvoice->customer_iban ? "\nBanca : ".$this->infoInvoice->customer_iban : '';
 
+        $phone = $this->infoInvoice->provider_phone ? "\nTelefon: ".$this->infoInvoice->provider_phone : '';
+        $email = $this->infoInvoice->provider_email ? "\nEmail: ".$this->infoInvoice->provider_email : '';
+        $website = $this->infoInvoice->provider_website ? "\nWebsite: ".$this->infoInvoice->provider_website : '';
+
+        $banks = json_decode($this->infoInvoice->provider_bank);
+
+        $templateBanks = '';
+
+        if(count($banks) > 0) {
+            foreach($banks as $bank) {
+                $templateBanks .= "\nBanca: ".$bank->bank."\n".$bank->account;
+            }
+        }
+
         $this->SetY(5);
         $this->SetX(8);
         $this->SetFont('helvetica', 'B', 9);
@@ -24,9 +38,9 @@ class Template extends Pdf
         $this->SetY(14);
         $this->SetX(8);
         $this->MultiAlignCell(50, 5, $this->infoInvoice->provider_name, 0, 1, 'L', false);
-        $this->SetFont('helvetica', '', 9);
+        $this->SetFont('helvetica', '', 7);
         $this->SetX(8);
-        $this->MultiAlignCell(60, 5, 'Nr.ord.reg.com./an : '.$this->infoInvoice->provider_reg_com_nr."\nA.F./C.U.I. : ".$this->infoInvoice->provider_cui."\nSediul : ".$this->infoInvoice->provider_address."\nContul : ".$this->infoInvoice->provider_bank."\nBanca : ".$this->infoInvoice->provider_iban, 0, 0, 'L', false);
+        $this->MultiAlignCell(60, 4, 'Nr.ord.reg.com./an : '.$this->infoInvoice->provider_reg_com_nr."\nA.F./C.U.I. : ".$this->infoInvoice->provider_cui."\nSediul : ".$this->infoInvoice->provider_address.$templateBanks.$phone.$email.$website, 0, 0, 'L', false);
 
         $this->SetY(5);
         $this->SetX(140);
@@ -37,9 +51,9 @@ class Template extends Pdf
         $this->SetY(14);
         $this->SetX(140);
         $this->MultiAlignCell(50, 5, $this->infoInvoice->customer_name, 0, 1, 'L', false);
-        $this->SetFont('helvetica', '', 9);
+        $this->SetFont('helvetica', '', 7);
         $this->SetX(140);
-        $this->MultiAlignCell(60, 5, 'Nr.ord.reg.com./an : '.$this->infoInvoice->customer_reg_com_nr."\nA.F./C.U.I. : ".$this->infoInvoice->customer_cui."\nSediul : ".$this->infoInvoice->customer_address."\nJudetul : ".$this->infoInvoice->customer_county.$banca.$iban, 0, 0, 'L', false);
+        $this->MultiAlignCell(60, 4, 'Nr.ord.reg.com./an : '.$this->infoInvoice->customer_reg_com_nr."\nA.F./C.U.I. : ".$this->infoInvoice->customer_cui."\nSediul : ".$this->infoInvoice->customer_address."\nJudetul : ".$this->infoInvoice->customer_county.$banca.$iban, 0, 0, 'L', false);
 
         $this->SetFont('helvetica', 'B', 16);
         $this->SetY(35);

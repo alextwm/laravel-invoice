@@ -12,9 +12,8 @@ class Invoice extends Model
      *
      * @property int $total_fara_tva
      * @property int $total_tva
-     * @property boolean $taxare_inversa
+     * @property bool $taxare_inversa
      */
-
     use HasFactory;
 
     protected $guarded = ['id'];

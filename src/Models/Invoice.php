@@ -5,14 +5,13 @@ namespace Twm\LaravelInvoice\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-    /**
-     * Twm\LaravelInvoice\Models
-     *
-     * @property double $total_fara_tva
-     * @property double $total_tva
-     * @property bool $taxare_inversa
-     */
-
+/**
+ * Twm\LaravelInvoice\Models
+ *
+ * @property float $total_fara_tva
+ * @property float $total_tva
+ * @property bool $taxare_inversa
+ */
 class Invoice extends Model
 {
     use HasFactory;

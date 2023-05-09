@@ -5,15 +5,16 @@ namespace Twm\LaravelInvoice\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Invoice extends Model
-{
     /**
      * Twm\LaravelInvoice\Models
      *
-     * @property int $total_fara_tva
-     * @property int $total_tva
+     * @property double $total_fara_tva
+     * @property double $total_tva
      * @property bool $taxare_inversa
      */
+
+class Invoice extends Model
+{
     use HasFactory;
 
     protected $guarded = ['id'];

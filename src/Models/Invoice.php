@@ -7,6 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Invoice extends Model
 {
+    /**
+     * Twm\LaravelInvoice\Models
+     *
+     * @property int $total_fara_tva
+     * @property int $total_tva
+     * @property boolean $taxare_inversa
+     */
+
     use HasFactory;
 
     protected $guarded = ['id'];

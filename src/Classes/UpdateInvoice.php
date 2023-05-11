@@ -35,7 +35,6 @@ class UpdateInvoice
                     $line->valoare_tva = 0;
                     $line->save();
                 }
-
                 array_push(self::$lines, $line);
             }
 

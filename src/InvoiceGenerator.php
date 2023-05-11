@@ -101,7 +101,6 @@ class InvoiceGenerator
         $this->name = $name;
         $this->disk = $disk;
         (new Generator($this->invoice, $name, $disk))->generate();
-
         $this->storeFile($name, $disk);
 
         return redirect()->back();
@@ -114,6 +113,6 @@ class InvoiceGenerator
 
     private function key_exists($key, $array)
     {
-        return array_key_exists($key, $array) ? iconv('UTF-8', 'ISO-8859-1//TRANSLIT//IGNORE', $array[$key]) : null;
+        return array_key_exists($key, $array) ? (gettype($array[$key]) == 'string' ? iconv('UTF-8', 'ISO-8859-1//TRANSLIT//IGNORE', $array[$key]) : $array[$key]) : null;
     }
 }

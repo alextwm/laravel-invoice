@@ -134,18 +134,20 @@ class Pdf extends Fpdf
         $this->_out(sprintf('BT %.3F Tc ET', $cs * $this->k));
     }
 
-    public function em($word) {
-        $word = str_replace("Ț","T",$word);
-        $word = str_replace("ț","t",$word);
-        $word = str_replace("Ă","A",$word);
-        $word = str_replace("ă","a",$word);
-        $word = str_replace("Â","A",$word);
-        $word = str_replace("Â","A",$word);
-        $word = str_replace("â","a",$word);
-        $word = str_replace("Ș","S",$word);
-        $word = str_replace("ș","s",$word);
-        $word = str_replace("Î","I",$word);
-        $word = str_replace("î","i",$word);
+    public function em($word)
+    {
+        $word = str_replace('Ț', 'T', $word);
+        $word = str_replace('ț', 't', $word);
+        $word = str_replace('Ă', 'A', $word);
+        $word = str_replace('ă', 'a', $word);
+        $word = str_replace('Â', 'A', $word);
+        $word = str_replace('Â', 'A', $word);
+        $word = str_replace('â', 'a', $word);
+        $word = str_replace('Ș', 'S', $word);
+        $word = str_replace('ș', 's', $word);
+        $word = str_replace('Î', 'I', $word);
+        $word = str_replace('î', 'i', $word);
+
         return $word;
     }
 }

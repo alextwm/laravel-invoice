@@ -65,7 +65,7 @@ class InvoiceGenerator
         foreach ($items as $item) {
             $line = InvoiceLine::create([
                 'invoice_id' => $this->invoice->id,
-                'product_name' => iconv('UTF-8', 'ISO-8859-1//TRANSLIT//IGNORE', $item->name),
+                'product_name' => $item->name,
                 'unit' => $item->unit,
                 'cota' => $item->cota,
                 'quantity' => $item->quantity,
@@ -113,6 +113,6 @@ class InvoiceGenerator
 
     private function key_exists($key, $array)
     {
-        return array_key_exists($key, $array) ? (gettype($array[$key]) == 'string' ? iconv('UTF-8', 'ISO-8859-1//TRANSLIT//IGNORE', $array[$key]) : $array[$key]) : null;
+        return array_key_exists($key, $array) ? $array[$key] : null;
     }
 }

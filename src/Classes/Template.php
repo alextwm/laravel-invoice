@@ -37,10 +37,10 @@ class Template extends Pdf
         $this->SetFont('helvetica', 'B', 12);
         $this->SetY(14);
         $this->SetX(8);
-        $this->MultiAlignCell(50, 5, $this->infoInvoice->provider_name, 0, 1, 'L', false);
+        $this->MultiAlignCell(50, 5, $this->em($this->infoInvoice->provider_name), 0, 1, 'L', false);
         $this->SetFont('helvetica', '', 7);
         $this->SetX(8);
-        $this->MultiAlignCell(60, 4, 'Nr.ord.reg.com./an : '.$this->infoInvoice->provider_reg_com_nr."\nA.F./C.U.I. : ".$this->infoInvoice->provider_cui."\nSediul : ".$this->infoInvoice->provider_address.$templateBanks.$phone.$email.$website, 0, 0, 'L', false);
+        $this->MultiAlignCell(60, 4, 'Nr.ord.reg.com./an : '.$this->infoInvoice->provider_reg_com_nr."\nA.F./C.U.I. : ".$this->infoInvoice->provider_cui."\nSediul : ".$this->em($this->infoInvoice->provider_address).$templateBanks.$phone.$email.$website, 0, 0, 'L', false);
 
         $this->SetY(5);
         $this->SetX(140);
@@ -50,10 +50,10 @@ class Template extends Pdf
         $this->SetFont('helvetica', 'B', 12);
         $this->SetY(14);
         $this->SetX(140);
-        $this->MultiAlignCell(50, 5, $this->infoInvoice->customer_name, 0, 1, 'L', false);
+        $this->MultiAlignCell(50, 5, $this->em($this->infoInvoice->customer_name), 0, 1, 'L', false);
         $this->SetFont('helvetica', '', 7);
         $this->SetX(140);
-        $this->MultiAlignCell(60, 4, 'Nr.ord.reg.com./an : '.$this->infoInvoice->customer_reg_com_nr."\nA.F./C.U.I. : ".$this->infoInvoice->customer_cui."\nSediul : ".$this->infoInvoice->customer_address."\nJudetul : ".$this->infoInvoice->customer_county.$banca.$iban, 0, 0, 'L', false);
+        $this->MultiAlignCell(60, 4, 'Nr.ord.reg.com./an : '.$this->infoInvoice->customer_reg_com_nr."\nA.F./C.U.I. : ".$this->infoInvoice->customer_cui."\nSediul : ".$this->em($this->infoInvoice->customer_address)."\nJudetul : ".$this->em($this->infoInvoice->customer_county).$banca.$iban, 0, 0, 'L', false);
 
         $this->SetFont('helvetica', 'B', 16);
         $this->SetY(35);

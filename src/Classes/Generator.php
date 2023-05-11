@@ -64,7 +64,7 @@ class Generator extends Pdf
             $pdf->Cell(10, 5, $index, 0, 0, 'C');
             $pdf->SetY($currentY);
             $pdf->SetX(15);
-            $pdf->MultiCell(70, 4, $line->product_name, 0, 'L', 0);
+            $pdf->MultiCell(70, 4, $this->em($line->product_name), 0, 'L', 0);
             $coordonataY = $pdf->GetY();
             $pdf->SetY($currentY);
             $pdf->SetX(90);

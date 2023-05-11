@@ -20,7 +20,7 @@ class UpdateInvoice
             foreach ($lines as $line) {
                 $line = InvoiceLine::create([
                     'invoice_id' => $invoice->id,
-                    'product_name' => iconv('UTF-8', 'ISO-8859-1//TRANSLIT//IGNORE', $line->name),
+                    'product_name' => $line->name,
                     'unit' => $line->unit,
                     'cota' => $line->cota,
                     'quantity' => $line->quantity,

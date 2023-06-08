@@ -7,7 +7,7 @@ return [
         'path' => public_path('images/logo.png'),
         'width' => 10,
         'height' => 10 
-    ];
+    ],
 
     'button_link' => public_path('images/button.png'),
 

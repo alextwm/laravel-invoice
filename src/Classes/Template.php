@@ -99,7 +99,7 @@ class Template extends Pdf
             $this->Cell(60, 10, 'TAXARE INVERSA', 0, 0, 'C');
         }
 
-        $this->Image(config('invoice.logo'), 70, 8, 50, 18);
+        $this->Image(config('invoice.logo')['path'], 70, 8, config('invoice.logo')['width'], config('invoice.logo')['height']);
 
         $this->SetLeftMargin(5);
         $this->Line(5, 5, 5, 270);
